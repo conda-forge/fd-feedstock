@@ -17,7 +17,6 @@ are now included in Fd as well as frame manipulation like channels selection, fr
 trend frame building and frame merging between different streams. The frames handled by the Fd
 package could contain any frame structures, from time series to events.
 
-
 Current build status
 ====================
 
