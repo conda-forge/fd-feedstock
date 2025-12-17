@@ -14,12 +14,13 @@ build:
     - {{ pin_subpackage("fd", max_pin="x") }}
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win or osx]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - meson
     - ninja
     - make  # [unix]
