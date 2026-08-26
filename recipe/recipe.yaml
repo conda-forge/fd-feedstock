@@ -2,21 +2,21 @@ schema_version: 1
 
 context:
   name: fd
-  version: 8.61.1
+  version: 8.65.2
 
 package:
   name: ${{ name }}
   version: ${{ version }}
 
 source:
-  url: http://software.igwn.org/lscsoft/source/${{ name }}-${{ version }}.tar.gz
-  sha256: 0717aab001355d4f55af5a1b77179da88d3e272a1b9233371920ebb109c0ed48
+  url: https://git.ligo.org/virgo/virgoapp/Fd/-/archive/${{ version }}/Fd-${{ version }}.tar.gz
+  sha256: fd224912fc4f124d6ba1fae070ff43f3cec273a991667135fe766ddf9acdae26
 
 build:
   dynamic_linking:
     overdepending_behavior: error
     overlinking_behavior: error
-  number: 1
+  number: 0
   skip: not linux
 
 requirements:
