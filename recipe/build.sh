@@ -12,6 +12,12 @@ meson_config_args=(
 
 mkdir forgebuild
 cd forgebuild
+
+# configure
 meson setup .. "${meson_config_args[@]}"
-ninja -v
-ninja install
+
+# build
+ninja -j ${CPU_COUNT} -v
+
+# install
+ninja -j ${CPU_COUNT} install

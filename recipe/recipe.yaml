@@ -1,22 +1,26 @@
 schema_version: 1
 
 context:
-  name: fd
-  version: 8.61.1
+  version: 8.65.2
+  # dependencies
+  cfg_version: 10.5.5
+  cm_version: 10.3.7
+  fr_version: 8.48.5
+  frv_version: 4.38.7
 
 package:
-  name: ${{ name }}
+  name: fd
   version: ${{ version }}
 
 source:
-  url: http://software.igwn.org/lscsoft/source/${{ name }}-${{ version }}.tar.gz
-  sha256: 0717aab001355d4f55af5a1b77179da88d3e272a1b9233371920ebb109c0ed48
+  url: https://git.ligo.org/virgo/virgoapp/Fd/-/archive/${{ version }}/Fd-${{ version }}.tar.gz
+  sha256: fd224912fc4f124d6ba1fae070ff43f3cec273a991667135fe766ddf9acdae26
 
 build:
   dynamic_linking:
     overdepending_behavior: error
     overlinking_behavior: error
-  number: 1
+  number: 0
   skip: not linux
 
 requirements:
@@ -28,28 +32,32 @@ requirements:
     - ninja
     - pkg-config
   host:
-    - cfg >=10.5.5
-    - cm >=10.3.7
-    - frv >=4.38.7
-    - libframel >=8.46.1
+    - cfg ${{ cfg_version }}.*
+    - cm ${{ cm_version }}.*
+    - frv ${{ frv_version }}.*
+    - libframel ${{ fr_version }}.*
   run_exports:
     - ${{ pin_subpackage("fd", upper_bound="x") }}
 
 tests:
+  - package_contents:
+      bin:
+        - FdGetChannelsList
+        - FdGetFramesInMemory
+        - FdIOServer
+        - FdMoni
+        - FdRangeGating
+        - FdSend
+        - FdStat
+        - FdWrite
+      lib:
+        - fd
+      include:
+        - fd/Fd.h
   - requirements:
       run:
         - pkg-config
     script:
-      - test -x ${PREFIX}/bin/FdGetChannelsList
-      - test -x ${PREFIX}/bin/FdGetFramesInMemory
-      - test -x ${PREFIX}/bin/FdIOServer
-      - test -x ${PREFIX}/bin/FdMoni
-      - test -x ${PREFIX}/bin/FdRangeGating
-      - test -x ${PREFIX}/bin/FdSend
-      - test -x ${PREFIX}/bin/FdStat
-      - test -x ${PREFIX}/bin/FdWrite
-      - test -r ${PREFIX}/lib/libfd.so
-      - test -f ${PREFIX}/include/fd/Fd.h
       - pkg-config --print-errors --exact-version "${{ version }}" fd
 
 about:
