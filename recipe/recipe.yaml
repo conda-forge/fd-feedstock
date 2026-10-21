@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 8.65.2
+  version: "8.65.3"
   # dependencies
   cfg_version: 10.5.5
   cm_version: 10.3.7
@@ -14,7 +14,7 @@ package:
 
 source:
   url: https://git.ligo.org/virgo/virgoapp/Fd/-/archive/${{ version }}/Fd-${{ version }}.tar.gz
-  sha256: fd224912fc4f124d6ba1fae070ff43f3cec273a991667135fe766ddf9acdae26
+  sha256: 42d865114da21f8d2d9c4f4d48402ddbf0e05db51d237e363e4df6fe8e9873c5
 
 build:
   dynamic_linking:
