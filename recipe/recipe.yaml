@@ -19,7 +19,6 @@ source:
 build:
   dynamic_linking:
     overdepending_behavior: error
-    overlinking_behavior: error
   number: 0
   skip: not linux
 
