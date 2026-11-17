@@ -198,4 +198,5 @@ Feedstock Maintainers
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
 * [@erinelizabethseder-virgo](https://github.com/erinelizabethseder-virgo/)
 * [@fcarbogn](https://github.com/fcarbogn/)
+* [@lethuill](https://github.com/lethuill/)
 
